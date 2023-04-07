@@ -19,7 +19,7 @@ const Normalisasi = ({ dtAlternatif, dtKriteria, dtNilai }) => {
   // state
   const [bobotArray, setBobotArray] = useState([]);
   const [hasilNormalisasi, setHasilNormalisasi] = useState([]);
-  const { matrixNormalisai, setMatrixNormalisai } = useState([]);
+  const [matrixNormalisai, setMatrixNormalisai] = useState([]);
 
   const calculateBobotArray = () => {
     const bobotArray = [];
@@ -70,14 +70,15 @@ const Normalisasi = ({ dtAlternatif, dtKriteria, dtNilai }) => {
 
   useEffect(() => {
     calculateBobotArray();
-    if (hasilNormalisasi.length > 0) {
-      const matrixNormalisai = hasilNormalisasi
-        .map((row) => row.map((cell) => cell.hasil.toString()).join(" & "))
-        .join(" \\\\ ");
-      setMatrixNormalisai(matrixNormalisai);
-    }
     return () => {};
   }, [dtAlternatif, dtKriteria, dtNilai]);
+
+  useEffect(() => {
+    const matrixNormalisai = hasilNormalisasi
+      .map((row) => row.map((cell) => cell.hasil).join(" & "))
+      .join(" \\\\ ");
+    setMatrixNormalisai(matrixNormalisai);
+  }, [hasilNormalisasi]);
 
   const matrixString = bobotArray
     .map((row) => row.map((cell) => cell.bobot.toString()).join(" & "))
