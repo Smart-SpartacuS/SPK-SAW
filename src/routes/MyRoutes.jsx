@@ -12,14 +12,12 @@ import Perhitungan from "../pages/perhitungan/Perhitungan";
 const MyRoutes = () => {
   return (
     <Routes>
-      <Route path="spk-saw">
-        <Route index element={<Dashboard />} />
+        <Route path="/" element={<Dashboard />} />
         <Route path="kriteria" element={<Kriteria />} />
         <Route path="alternatif" element={<Alternatif />} />
         <Route path="pembobotan" element={<Pembobotan />} />
         <Route path="nilai" element={<Nilai />} />
         <Route path="perhitungan" element={<Perhitungan />} />
-      </Route>
     </Routes>
   );
 };

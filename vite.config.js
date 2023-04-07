@@ -9,5 +9,4 @@ export default defineConfig({
   server: {
     open: true,
   },
-  base: "/spk-saw/",
 });
